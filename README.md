@@ -1,1 +1,1 @@
-# JavaScript_Course-2023__From_Zero_to_Expert
+# JavaScript Course 2023 From Zero to Expert
