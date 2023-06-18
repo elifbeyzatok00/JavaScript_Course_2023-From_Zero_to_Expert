@@ -89,3 +89,38 @@ console.log(_x, y);
 
 const averageAge = (ageJonas + ageSarah) / 2;
 console.log(ageJonas, ageSarah, averageAge);
+
+console.log("---------- 17. Strings and Template Literals -----------");
+const _firstName = "Jonas";
+const _job = "teacher";
+const _birtYear = 1991;
+const _year = 2037;
+
+const jonas =
+  "I'm " +
+  _firstName +
+  ", a " +
+  (_year - birtYear) +
+  " years old " +
+  _job +
+  "!";
+console.log(jonas);
+
+const jonasNew = `I'm  ${_firstName}, a  ${
+  _year - birtYear
+} years old ${_job}!`;
+console.log(jonasNew);
+
+// in js \n\ is meaning new line. it is a bug for js actualy :)
+console.log(
+  "String with \n\
+   multiple \n\
+   lines"
+);
+
+// you can go new line witout \n\ too but you need to use backticks
+console.log(
+  `String with
+     multiple
+     lines`
+);
