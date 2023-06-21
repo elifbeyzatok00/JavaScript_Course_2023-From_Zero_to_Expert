@@ -124,3 +124,28 @@ console.log(
      multiple
      lines`
 );
+
+console.log(
+  "---------- 18. Taking Decisions: if / else Statements -----------"
+);
+
+const _age = 15;
+const isOldEnough = _age >= 18;
+
+if (isOldEnough) {
+  console.log("Sarah can start driving license🚗");
+} else {
+  const yearsLeft = 18 - _age;
+  console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`);
+}
+
+console.log("---------- 20. Type Conversion and Coercion -----------");
+//Type Conversion
+const inputYear = "1991";
+console.log(Number(inputYear) + 18);
+console.log(inputYear + 18);
+
+console.log(Number("Jonas")); //NaN
+console.log(typeof NaN); //number
+
+console.log(String(23), 23); //NaN
