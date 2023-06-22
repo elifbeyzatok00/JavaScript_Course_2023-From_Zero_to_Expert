@@ -149,3 +149,45 @@ console.log(Number("Jonas")); //NaN
 console.log(typeof NaN); //number
 
 console.log(String(23), 23); //NaN
+
+console.log("---------- 21. Truthy and Falsy Values -----------");
+// js has 5 falsy values: 0, '', undefined, null, NaN
+// falsy values turns false when converted type of boolean
+
+console.log(Boolean(0)); //false
+console.log(Boolean(undefined)); //false
+console.log(Boolean("Jonas")); //true
+console.log(Boolean({})); //true
+console.log(Boolean("")); //false
+
+const money = 0; //false
+if (money) {
+  console.log("don't spend it all");
+} else {
+  console.log("You should get a job"); // this will work
+}
+
+let height; //false
+if (height) {
+  console.log("defined");
+} else {
+  console.log("undefined"); // this will work
+}
+
+console.log("---------- 22. Equality Operators: == vs. === -----------");
+const __age = 18;
+if (__age === 18) console.log("You just became an adult :D");
+
+const favorite = prompt("What's your favorite number?");
+console.log(favorite);
+console.log(typeof favorite);
+
+if (favorite === 23) {
+  console.log("Cool! Good number.");
+} else if (favorite === 7) {
+  console.log("7 is also a cool number");
+} else {
+  console.log("Number is not 23 or 7");
+}
+
+if (favorite !== 23) console.log("Why not 23?");
