@@ -191,3 +191,45 @@ if (favorite === 23) {
 }
 
 if (favorite !== 23) console.log("Why not 23?");
+
+console.log("---------- 24. Logical Operators -----------");
+const hasDriverLicense = true; //A
+const hasGoodVision = true; //B
+console.log(hasDriverLicense && hasGoodVision); //true
+console.log(hasDriverLicense || hasGoodVision); //true
+
+if (hasDriverLicense && hasGoodVision) {
+  console.log("Sarah is able to drive"); // this will work
+} else {
+  console.log("Someone else should drive...");
+}
+
+console.log("---------- 26. The switch Statement -----------");
+const day = "wednesday";
+switch (day) {
+  case "monday": // day === 'monday'
+    console.log("Plan course structure");
+    console.log("Go to coding meetup");
+    break;
+  case "tuesday":
+    console.log("tuesday");
+    break;
+  case "wednesday":
+    console.log("wednesday");
+  case "thursday":
+    console.log("thursday");
+    break;
+  case "friday":
+    console.log("friday");
+    break;
+  case "saturday":
+    console.log("saturday");
+    break;
+  case "sunday":
+    console.log("sunday");
+    break;
+  default:
+    console.log("Nor a valid day");
+    break;
+}
+
