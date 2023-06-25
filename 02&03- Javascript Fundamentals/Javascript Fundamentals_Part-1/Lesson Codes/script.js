@@ -233,3 +233,38 @@ switch (day) {
     break;
 }
 
+console.log("---------- 27. Statements and Expressions-----------");
+
+if (23 > 10) {
+  const str = "23 is bigger";
+  // "23 is bigger" -> expression
+  // const str = "23 is bigger"; -> statement
+}
+/*
+if (23 > 10) {
+  const str = "23 is bigger";
+}
+ this is a statement too
+*/
+
+console.log(`I'm ${2037 - 1991} years old.`);
+//2037 - 1991 -> expression
+
+// in js we can't add statements in `${}`
+//but we can add expression in `${}`
+
+const me = "Jonas";
+// me -> expression
+console.log(`My name is ${me} `);
+
+console.log("---------- 28. The Conditional (Ternary) Operator-----------");
+const agee = 23;
+agee >= 18
+  ? console.log("I like to drink wine 🍷")
+  : console.log("I like to drink water 💧");
+
+const drink = agee >= 18 ? " wine 🍷" : " water 💧";
+console.log(drink);
+// agee >= 18 ? " wine 🍷" : " water 💧"  -> expression
+
+console.log(`I like to drink ${agee >= 18 ? " wine 🍷" : " water 💧"} `);
