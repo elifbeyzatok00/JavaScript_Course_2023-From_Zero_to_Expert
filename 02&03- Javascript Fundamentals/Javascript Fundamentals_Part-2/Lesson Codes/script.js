@@ -84,3 +84,26 @@ function fruitProcessor(apples, oranges) {
 }
 console.log(fruitProcessor(2, 3));
 
+console.log("---------- 37. Reviewing Functions -----------");
+const calcAge = function (birthYear) {
+  return 2037 - birthYear;
+};
+
+const _yearsUntilRetirement = function (birthYear, firstName) {
+  const age = calcAge(birthYear);
+  const retirement = 65 - age;
+
+  // if you don't want ignore your code, you must write your code before return command
+  if (retirement > 0) {
+    console.log(`${firstName} retires in ${retirement} years`);
+    return retirement;
+  } else {
+    console.log(`${firstName} has already retired 🎉`);
+    return -1;
+  }
+
+  //   return retirement;
+  //   return `${firstName} retires in ${retirement} years`;
+};
+console.log(_yearsUntilRetirement(1991, "Jonas"));
+console.log(_yearsUntilRetirement(1950, "Mike"));
