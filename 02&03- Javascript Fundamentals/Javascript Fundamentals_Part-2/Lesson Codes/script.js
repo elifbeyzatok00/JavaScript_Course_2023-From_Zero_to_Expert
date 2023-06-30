@@ -107,3 +107,45 @@ const _yearsUntilRetirement = function (birthYear, firstName) {
 };
 console.log(_yearsUntilRetirement(1991, "Jonas"));
 console.log(_yearsUntilRetirement(1950, "Mike"));
+
+console.log("---------- 39. Introduction to Arrays -----------");
+const friend1 = "Michael";
+const friend2 = "Steven";
+const friend3 = "Peter";
+
+const friends = ["Michael", "Steven", "Peter"];
+console.log(friends);
+
+const years = new Array(1991, 1984, 2008, 2020);
+
+console.log(friends[0]);
+console.log(friends.length);
+console.log(friends[friends.length - 1]); //last element of the array
+
+friends[2] = "Jay";
+console.log(friends);
+// array of friends declared const but arrays are not primitive ones so even declared const we can change array elements
+//but not all array at a one time
+//friends = ['Bob', 'Alice'];
+
+const firstName = "Jonas";
+const jonas = [firstName, "Schmedtmann", 2037 - 1991, "teacher", friends];
+console.log(jonas);
+
+//Exercise
+const _calcAge = function (birthYear) {
+  return 2037 - birthYear;
+};
+const year = [1990, 1967, 2002, 2010, 2018];
+
+const _age1 = calcAge(years[0]);
+const _age2 = calcAge(years[1]);
+const _age3 = calcAge(years[years.length - 1]);
+console.log(_age1, _age2, _age3);
+
+const ages = [
+  calcAge(years[0]),
+  calcAge(years[1]),
+  calcAge(years[years.length - 1]),
+];
+console.log(ages);
