@@ -127,3 +127,115 @@ matilda.calAge();
 const f = jonas.calcAge;
 f(); //typeerror
 */
+
+console.log(
+  '-------------- 98. Regular Functions vs. Arrow Functions --------------'
+);
+/*exp. */
+const jonas2 = {
+  _firstName: 'Jonas',
+  year: 1991,
+  calcAge: function () {
+    console.log(this); // jonas object -> {year: 1991, calcAge: ƒ}
+    console.log(2037 - this.year); //46
+  },
+  greet: () => console.log(`Hey ${this._firstName}`),
+};
+jonas2.greet(); //Hey undefined
+//because arrow functions doesn't have their own this keywords
+//but uses arround the this keywords
+
+/*exp. */
+var _firstName = 'Matilda';
+const _jonas = {
+  _firstName: 'Jonas',
+  year: 1991,
+  calcAge: function () {
+    console.log(this); // jonas object -> {year: 1991, calcAge: ƒ}
+    console.log(2037 - this.year); //46
+  },
+  greet: () => console.log(`Hey ${this._firstName}`),
+};
+_jonas.greet(); //Hey Matilda
+//arrow function greet() used its arround this keyword
+
+/*exp. */
+var _firstName2 = 'Matilda';
+const _jonas2 = {
+  _firstName2: 'Jonas',
+  year: 1991,
+  calcAge: function () {
+    console.log(this); // jonas object -> {year: 1991, calcAge: ƒ}
+    console.log(2037 - this.year); //46
+  },
+  greet: function () {
+    console.log(`Hey ${this._firstName2}`);
+  },
+};
+_jonas2.greet(); //Hey Jonas
+//changed arrow func to normal func
+
+/* ------------------------------------------------------------------ */
+
+/*exp. */
+const elif = {
+  firstName_: 'Elif',
+  year: 2002,
+  calcAge: function () {
+    console.log(2037 - this.year); //35
+
+    //solution 1
+    // const self = this;
+    // const isMillenial = function () {
+    //   console.log(self); //{firstName_: 'Elif', year: 2002, calcAge: ƒ, greet: ƒ}
+    //   console.log(self.year >= 1981 && self.year <= 1996);
+    // };
+    // isMillenial(); //false
+
+    //solution 2
+    const isMillenial = () => {
+      console.log(this); //{firstName_: 'Elif', year: 2002, calcAge: ƒ, greet: ƒ}
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+    isMillenial(); //false
+  },
+  greet: () => {
+    console.log(this);
+    console.log(`Hey ${this.firstName_}`);
+  },
+};
+elif.greet();
+elif.calcAge();
+//solution1:
+/* Uncaught TypeError: Cannot read properties of undefined (reading 'year')
+at isMillenial
+at Object.calcAge
+
+to solve this problem we use self keyword
+change this keywords to self 
+*/
+
+//solution2
+/*
+we made the parent function "arrow function"
+*/
+
+// arguments keywords
+// thanks to arguments keywords we can add unlimited parameters to the function
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+addExpr(2, 5); //Arguments(2) [2, 5, callee: (...), Symbol(Symbol.iterator): ƒ]
+// addExpr(2, 5, 8, 12); //Arguments(4) [2, 5, 8, 12, callee: (...), Symbol(Symbol.iterator): ƒ]
+
+// var addArrow = (a, b) => {
+//   console.log(arguments);
+//   return a + b;
+// };
+// addArrow(2, 4);
+
+//Uncaught ReferenceError: arguments is not defined
+/*
+we took error because arguments keyword is for only regular functions not for arrow functions
+*/
