@@ -239,3 +239,22 @@ addExpr(2, 5); //Arguments(2) [2, 5, callee: (...), Symbol(Symbol.iterator): ƒ
 /*
 we took error because arguments keyword is for only regular functions not for arrow functions
 */
+
+console.log(
+  '-------------- 99. Primitives vs. Objects (Primitive vs. Reference Types) --------------'
+);
+let age = 30;
+let oldAge = age;
+age = 31;
+console.log(age); //31
+console.log(oldAge); //30
+
+const me = {
+  name: 'Jonas',
+  age: 30,
+};
+
+const friend = me;
+friend.age = 27;
+console.log('Friend:', friend);
+console.log('Me:', me);
