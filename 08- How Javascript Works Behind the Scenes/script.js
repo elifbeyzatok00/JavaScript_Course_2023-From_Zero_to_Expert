@@ -258,3 +258,51 @@ const friend = me;
 friend.age = 27;
 console.log('Friend:', friend);
 console.log('Me:', me);
+
+console.log(
+  '-------------- 100. Primitives vs. Objects in Practice --------------'
+);
+//Primitive types
+let lastName = 'Williams';
+let oldLastName = lastName;
+lastName = 'Davis';
+console.log(lastName, oldLastName); //Davis Williams
+
+const jessica = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+};
+
+//reference types
+const marriedJessica = jessica;
+marriedJessica.lastName = 'Davis';
+console.log('Before marriage:', jessica); //Before marriage: {firstName: 'Jessica', lastName: 'Davis', age: 27}
+console.log('After marriage:', marriedJessica); //After marriage: {firstName: 'Jessica', lastName: 'Davis', age: 27}
+
+//reference types are keeping the same object in the heap
+
+//Copiny objects
+const jessica2 = {
+  firstName: 'Jessica',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Alice', 'Bob'],
+};
+
+const jessicaCopy = Object.assign({}, jessica2); // that don't make deep clone
+
+jessicaCopy.lastName = 'Davis';
+
+//manipulating
+jessicaCopy.family.push('Mary');
+jessicaCopy.family.push('John');
+
+console.log('Before marriage:', jessica2); //Before marriage: {firstName: 'Jessica', lastName: 'Williams', age: 27, family: Array(4)}
+console.log('After marriage:', jessicaCopy); //After marriage: {firstName: 'Jessica', lastName: 'Davis', age: 27, family: Array(4)}
+
+//Both objects have 4 family members :(
+
+//changing lastName is a first level operation so we didn't have problem to change it but changing family array deeply nested array
+// jessica2 and jessicaCopy are both have a property called family which points the same object so if we changed one, it will change other one
+
