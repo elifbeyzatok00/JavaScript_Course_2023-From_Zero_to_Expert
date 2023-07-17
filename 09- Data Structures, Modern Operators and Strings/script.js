@@ -89,7 +89,31 @@ const restaurant2 = {
       close: 24,
     },
   },
+
+  orderDelivery: function (starterIndex, mainIndex, time, address) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delevered to ${address} at ${time} `
+    );
+  },
+
+  orderPasta: function (ingredient1, ingredient2, ingredient3) {
+    console.log(
+      `Here is your delicious pasta with ${ingredient1},${ingredient2} and ${ingredient3}`
+    );
+  },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 };
+
+restaurant2.orderDelivery({
+  time: '22.30',
+  address: 'Via del Sole, 21',
+  mainIndex: 2,
+  starterIndex: 2,
+});
 
 //using objects' original name
 const { name, openingHours, categories } = restaurant2;
@@ -102,3 +126,81 @@ const {
   categories: tags,
 } = restaurant2;
 console.log(restaurantName, hours, tags);
+
+//Default values
+const { menu = [], starterMenu: starters = [] } = restaurant2;
+console.log(menu, starters);
+// []
+// (4) ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad']
+
+// Mutating variables
+let _a = 111;
+let _b = 999;
+const obj = { _a: 23, _b: 7, _c: 14 };
+({ _a, _b } = obj);
+console.log(_a, _b); //23 7
+
+// Nested objects
+const {
+  fri: { open: o, close: c_ },
+} = openingHours;
+console.log(o, c_); //11 23
+
+console.log('------------------105. The Spread Operator (...)---------------');
+const _arr = [7, 8, 9];
+const badNewArr = [1, 2, _arr[0], _arr[1], _arr[2]];
+console.log(badNewArr); //[1, 2, 7, 8, 9]
+
+const _newArr = [1, 2, ..._arr];
+console.log(_newArr); //[1, 2, 7, 8, 9]
+
+const newMenu = [...restaurant2.mainMenu, 'Gnocci'];
+console.log(newMenu); //['Pizza', 'Pasta', 'Risotto', 'Gnocci']
+
+//we can use spread operator only when we used commas(,)
+
+//Copy array
+const mainMenuCopy = [...restaurant2.mainMenu];
+
+// Join 2 arrays
+const _menu = [...restaurant2.mainMenu, ...restaurant2.starterMenu];
+console.log(_menu);
+//['Pizza', 'Pasta', 'Risotto', 'Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad']
+
+// Iterables: arrays, strings, maps, sets. NOT objects
+const str = 'Jonas';
+const letters = [...str, ' ', 'S.'];
+console.log(letters);
+//['J', 'o', 'n', 'a', 's', ' ', 'S.']
+
+/* where we use spread element?
+
+when building an array,
+when we pass the values into a function 
+
+*/
+
+console.log(...str); //J o n a s
+
+//console.log(`${...str} Schmedment`); //Unexpected token '...'
+
+//Real world example
+const ingredients = [
+  prompt("Let's make pasta! Ingredient 1 ?"),
+  prompt("Let's make pasta! Ingredient 2 ?"),
+  prompt("Let's make pasta! Ingredient 3 ?"),
+];
+console.log(ingredients);
+
+restaurant2.orderPasta(ingredients[0], ingredients[1], ingredients[2]);
+restaurant2.orderPasta(...ingredients);
+//they make same thing
+
+//Objects
+const newRestaurant = { foundeIn: 1998, ...restaurant2, founder: 'Guiseppe' };
+console.log(newRestaurant);
+
+const restaurantCopy = { ...restaurant2 };
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy.name);
+console.log(restaurant2.name);
