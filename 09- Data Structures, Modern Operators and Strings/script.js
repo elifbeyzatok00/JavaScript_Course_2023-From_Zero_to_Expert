@@ -204,3 +204,53 @@ const restaurantCopy = { ...restaurant2 };
 restaurantCopy.name = 'Ristorante Roma';
 console.log(restaurantCopy.name);
 console.log(restaurant2.name);
+
+console.log(
+  '------------------106. Rest Pattern and Parameters---------------'
+);
+
+// 1) Destructuring
+
+//SPREAD, because on RIGHT side of =
+const arr2 = [1, 2, ...[3, 4]];
+
+//REST, because on LEFT side of =
+const [d, e, ...others] = [1, 2, 3, 4, 5];
+console.log(d, e, ...others);
+
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant2.mainMenu,
+  ...restaurant2.starterMenu,
+];
+console.log(pizza, risotto, ...otherFood);
+
+//Objects
+const { sat, ...weekdays } = restaurant2.openingHours;
+console.log(weekdays);
+//{thu: {…}, fri: {…}}
+
+// 2)Functions
+const add = function (...numbers) {
+  // console.log(numbers);
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+
+add(2, 3);
+add(5, 3, 7, 2);
+add(8, 2, 5, 3, 2, 1, 4);
+
+const f = [23, 5, 7];
+add(...f);
+
+restaurant2.orderPizza('mushrooms', 'onion', 'olives', 'spinach');
+/*
+mushrooms
+ (3) ['onion', 'olives', 'spinach']
+*/
+restaurant2.orderPizza('mushrooms');
+/*
+mushrooms
+[]
+*/
