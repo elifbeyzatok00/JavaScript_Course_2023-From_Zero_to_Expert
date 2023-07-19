@@ -254,3 +254,52 @@ restaurant2.orderPizza('mushrooms');
 mushrooms
 []
 */
+
+console.log(
+  '------------------107. Short Circuiting (&& and ||)---------------'
+);
+// Use ANY data type,return ANY data type, short-circuiting
+/* remember
+In JavaScript, we have 6 falsy values:
+false.
+0 (zero)
+'' or “” (empty string)
+null.
+undefined.
+NaN
+*/
+
+console.log('-----------OR---------');
+console.log(3 || 'Jonas'); //3
+console.log('' || 'Jonas'); //Jonas
+console.log(true || 0); //true
+console.log(undefined || null); //null
+
+console.log(undefined || 0 || '' || 'Hello' || 23 || null); //Hello
+
+//  || returns the first true value
+
+const guests1 = restaurant2.numGuests ? restaurant2.numGuests : 10;
+// if restaurant2.numGuests is not exists returns 10
+console.log(guests1); //10
+
+const guests2 = restaurant2.numGuests || 10;
+console.log(guests2); //10
+
+console.log('-----------AND---------');
+console.log(0 && 'Jonas'); //0
+console.log(7 && 'Jonas'); //Jonas
+
+console.log('Hello' && 23 && null && 'jonas'); //null
+
+//Practical example
+if (restaurant2.orderPizza) {
+  restaurant2.orderPizza('mushrooms', 'spinach');
+}
+/**
+ mushrooms
+ ['spinach']
+ */
+
+//similar to if blocks but not recommend
+restaurant2.orderPizza && restaurant2.orderPizza('mushrooms', 'spinach');
