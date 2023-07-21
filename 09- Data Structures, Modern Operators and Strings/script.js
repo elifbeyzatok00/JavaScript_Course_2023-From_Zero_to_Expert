@@ -303,3 +303,18 @@ if (restaurant2.orderPizza) {
 
 //similar to if blocks but not recommend
 restaurant2.orderPizza && restaurant2.orderPizza('mushrooms', 'spinach');
+
+
+console.log(
+  '------------------108. The Nullish Coalescing Operator (??)---------------'
+);
+restaurant2.numGuests = 0;
+const guests = restaurant2.numGuests || 10;
+console.log(guests); //10
+
+//almost same OR operator but it will fix errors
+// instead falsy values it works
+//Nullish: null and undefined (NOT 0 or '')
+const guestCorrect = restaurant2.numGuests ?? 10;
+console.log(guestCorrect); //0
+
