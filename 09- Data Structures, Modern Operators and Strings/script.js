@@ -318,3 +318,165 @@ console.log(guests); //10
 const guestCorrect = restaurant2.numGuests ?? 10;
 console.log(guestCorrect); //0
 
+console.log(
+  '------------------109. Logical Assignment Operators---------------'
+);
+const rest1 = {
+  name: 'Capri',
+  numGuests: 20,
+};
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'Giovanni Rossi',
+};
+
+rest1.numGuests = rest1.numGuests || 10;
+rest2.numGuests = rest2.numGuests || 10;
+
+console.log(rest1);
+// {name: 'Capri', numGuests: 20}
+console.log(rest2);
+//{name: 'La Piazza', owner: 'Giovanni Rossi', numberGuests: 10}
+
+//---------------------------------------------------------------
+
+//OR assignment operator
+rest1.numGuests ||= 10;
+console.log(rest1);
+
+const rest3 = {
+  name: 'Capri',
+  numGuests: 0,
+};
+rest3.numGuests ||= 10;
+console.log(rest3); //10  (numGuests: 0 -> falsy so )
+
+//Nullish assignment operator
+rest3.numGuests ??= 10;
+console.log(rest3); //0  (numGuests: 0 -> not falsy so )
+
+//---------------------------------------------------------------
+const rest4 = {
+  name: 'Capri',
+  numGuests: 20,
+};
+const rest5 = {
+  name: 'La Piazza',
+  owner: 'Giovanni Rossi',
+};
+
+rest4.owner = rest4.owner && '<ANONYMOUS>';
+console.log(rest4);
+//{name: 'Capri', numGuests: 20, owner: undefined}
+
+rest5.owner = rest5.owner && '<ANONYMOUS>';
+console.log(rest5);
+//{name: 'La Piazza', owner: '<ANONYMOUS>'}
+
+//AND assignment operator
+rest4.owner &&= '<ANONYMOUS>';
+rest5.owner &&= '<ANONYMOUS>';
+console.log(rest4);
+console.log(rest5);
+
+console.log(
+  '------------------111. Looping Arrays: The for-of Loop---------------'
+);
+const menu_ = [...restaurant2.starterMenu, ...restaurant2.mainMenu];
+
+for (const item of menu_) console.log(item);
+
+//oldschool way
+for (const item of menu_.entries()) {
+  console.log(`${item[0] + 1}: ${item[1]}`);
+}
+
+//more practive way
+for (const [i, el] of menu_.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+
+// console.log([...menu_.entries()]);
+
+console.log('------------------112. Enhanced Object Literals---------------');
+const _weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+const _hours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
+const restaurant3 = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+
+  //ES6 enchanced object literals
+  _hours,
+
+  order(starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
+
+  orderDelivery(starterIndex, mainIndex, time, address) {
+    console.log(
+      `Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delevered to ${address} at ${time} `
+    );
+  },
+
+  orderPasta(ingredient1, ingredient2, ingredient3) {
+    console.log(
+      `Here is your delicious pasta with ${ingredient1},${ingredient2} and ${ingredient3}`
+    );
+  },
+
+  orderPizza(mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
+};
+
+console.log('------------------113. Optional Chaining (?.)---------------');
+if (restaurant3._hours && restaurant3._hours.mon) {
+  console.log(restaurant3._hours.mon.open);
+}
+
+//WITH optinal chaining
+console.log(restaurant3._hours.mon?.open);
+// how does it (?) work?
+// if before the ? is exists, will be read after the ?
+// exists: not null / undefined
+// if it is 0 / '', it still exists
+
+//example
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+for (const day of days) {
+  console.log(day);
+  const open = restaurant3._hours[day]?.open ?? 'closed';
+  console.log(`On ${day}, we open at ${open}`);
+}
+
+//Methods
+console.log(restaurant3.order?.(0, 1) ?? 'Method does not exits');
+
+//Arrays
+const users = [{ name: 'Jonas', email: 'hello@jonas.io' }];
+console.log(users[0]?.name ?? 'User array empty');
+
+if (users.length > 0) console.log(users[0].name);
+else console.log('user array empty');
+
+// ?? -> is  knowledge quality operators
+
