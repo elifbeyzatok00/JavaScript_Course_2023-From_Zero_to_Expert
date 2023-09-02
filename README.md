@@ -6,3 +6,5 @@ You can review the [Theory Lectures pdf](https://drive.google.com/file/d/1mDO5Yo
 You can review [My notes ](https://drive.google.com/file/d/1mDO5YoiXGQWO7UOr9O7GFN07rsIQpU0c/view?usp=sharing) by clicking on
 
 ![](https://static-cdn.jtvnw.net/jtv_user_pictures/dd970ca6-0630-4ef8-8ac2-894c8275d765-profile_banner-480-1280x640.jpeg)
+
+This repo was developed based on [this repo](https://github.com/jonasschmedtmann/complete-javascript-course)
